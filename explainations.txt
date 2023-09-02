@@ -1,0 +1,49 @@
+This Python code is a traffic sign detector that uses a pre-trained deep learning model to detect and classify traffic signs in real-time video. Here is a breakdown of the code:
+
+    Import necessary libraries:
+        root from logging: The root logger instance for logging messages.
+        cv2: OpenCV (Open Source Computer Vision Library) is used to capture video frames and perform image processing tasks.
+        numpy: A popular numerical computing library that is used to work with multi-dimensional arrays and matrices.
+        tensorflow: A popular open-source machine learning framework.
+        pyttsx3: A Python text-to-speech library.
+        threading: A Python library that provides a simple way to create threads.
+        sys: A Python module that provides access to some variables used or maintained by the interpreter.
+        tkinter: A standard Python library for creating GUI (Graphical User Interface) applications.
+
+    Load pre-trained model:
+        The code loads the pre-trained model from the file traffic_sign_classifier.h5 using the load_model function from tensorflow.keras.models.
+
+    Set up video capture:
+        The code initializes the video capture object cap using the cv2.VideoCapture() function.
+
+    Preprocess input image:
+        The code defines a function preprocess that preprocesses an input image by converting it to grayscale, resizing it to 32x32 pixels, scaling pixel values to [0, 1], and adding a channel dimension.
+
+    Define a dictionary to map class labels to sign names:
+        The code defines a dictionary sign_names that maps the class labels of the traffic sign dataset to their corresponding sign names.
+
+    Set the threshold value for prediction probabilities:
+        The code sets a threshold value of 0.68 for prediction probabilities.
+
+    Initialize the text-to-speech engine:
+        The code initializes the text-to-speech engine engine using the pyttsx3.init() function.
+
+    Define a function to speak the predicted sign name:
+        The code defines a function speak that speaks the predicted sign name using the text-to-speech engine.
+
+    Loop over frames from the video capture:
+        The code uses a while loop to read frames from the video capture and perform the following tasks for each frame:
+            Preprocess the input image using the preprocess function.
+            Make a prediction using the pre-trained model.
+            Get the predicted class label and probability.
+            Get the corresponding sign name if probability is above threshold; otherwise, classify as "No Sign".
+            Draw the sign name and probability on the frame and display it on the terminal.
+            Create a new thread to speak the sign name using the speak function.
+            Display the frame using the cv2.imshow function.
+            Break the loop if the 'q' key is pressed.
+
+    Release the video capture and close all windows:
+        The code defines a function quit that releases the video capture object and closes all windows.
+
+
+
